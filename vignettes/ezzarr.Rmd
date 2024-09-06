@@ -1,0 +1,48 @@
+---
+title: "Using ez-zarr in R"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using ez-zarr in R}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Load the `ezzarr` package
+
+```{r setup}
+library(ezzarr)
+```
+
+# Check the version of ez-zarr
+
+This will create the conda environment if it doesn't already exist.
+
+```{r}
+getEzZarrVersion()
+```
+
+# Get the path to the environment
+
+```{r}
+getEzZarrEnvPath()
+```
+
+# Activate the environment and load an example image
+
+```{r}
+reticulate::use_condaenv(condaenv = getEzZarrEnvPath())
+```
+
+# Session info
+
+```{r}
+sessionInfo()
+```
+
