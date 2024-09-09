@@ -1,6 +1,7 @@
 ---
 title: "Using ez-zarr in R"
-output: rmarkdown::html_vignette
+date: "`r Sys.Date()`"
+output: rmarkdown::html_document
 vignette: >
   %\VignetteIndexEntry{Using ez-zarr in R}
   %\VignetteEngine{knitr::rmarkdown}
@@ -34,11 +35,102 @@ getEzZarrVersion()
 getEzZarrEnvPath()
 ```
 
+# Download example data to temporary directory
+
+```{r}
+td <- tempdir()
+url <- "https://zenodo.org/records/10519143/files/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr.zip"
+download.file(url, destfile = file.path(td, basename(url)))
+unzip(file.path(td, basename(url)), 
+      exdir = td)
+zarrpath <- file.path(td, sub("\\.zip$", "", basename(url)))
+fs::dir_tree(zarrpath, recurse = 3)
+```
+
 # Activate the environment and load an example image
 
 ```{r}
-reticulate::use_condaenv(condaenv = getEzZarrEnvPath())
+env <- enableEzZarr()
+print(env$plt$get_backend())
+env$plt$switch_backend("agg")
+print(env$plt$get_backend())
+img <- env$ez_zarr$ome_zarr$Image(path = file.path(zarrpath, "B/03/0"))
 ```
+
+# Get details about the image
+
+```{r}
+## Channel information
+length(img$nchannels_image)
+img$channels[[1]]
+
+## Label names
+img$label_names
+
+## Scales for a given pyramid level
+unlist(img$get_scale(pyramid_level = "2"))
+
+## Path
+img$get_path()
+
+## Image name
+img$name
+
+## Table names
+img$table_names
+```
+
+# Plot image
+
+## With default settings
+
+```{r}
+img$plot()
+```
+
+## Adding a scale bar, limiting the channel range
+
+```{r}
+img$plot(channels = list(0L),
+         channel_colors = list("white"),
+         channel_ranges = list(c(100, 600)),
+         scalebar_micrometer = 150L,
+         scalebar_color = "yellow",
+         scalebar_position = "topleft",
+         scalebar_label = TRUE,
+         fig_width_inch = 5,
+         fig_height_inch = 4,
+         fig_dpi = 100,
+         axis_style = "micrometer")
+```
+
+## Zoom in
+
+```{r}
+img$plot(pyramid_level = "0",
+         upper_left_yx = c(130, 140),
+         lower_right_yx = c(300, 310),
+         scalebar_micrometer = 30L,
+         scalebar_color = "magenta",
+         fig_width_inch = 5,
+         fig_height_inch = 5,
+         fig_dpi = 100)
+```
+
+## Overlay nuclei segmentation
+
+```{r}
+img$plot(label_name = "nuclei", 
+         pyramid_level = "0",
+         upper_left_yx = c(130, 140),
+         lower_right_yx = c(300, 310),
+         scalebar_micrometer = 30L,
+         scalebar_color = "magenta",
+         fig_width_inch = 5,
+         fig_height_inch = 5,
+         fig_dpi = 100)
+```
+
 
 # Session info
 
