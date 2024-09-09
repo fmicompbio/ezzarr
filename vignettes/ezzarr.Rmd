@@ -131,6 +131,13 @@ img$plot(label_name = "nuclei",
          fig_dpi = 100)
 ```
 
+# Import and plot entire plate
+
+```{r}
+plt <- env$ez_zarr$ome_zarr$import_plate(zarrpath)
+plt$plot()
+```
+
 
 # Session info
 
