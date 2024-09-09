@@ -18,7 +18,8 @@ LazyData: true
 RoxygenNote: 7.3.2
 StagedInstall: no
 Imports: 
-    basilisk
+    basilisk,
+    fs
 Suggests: 
     knitr,
     rmarkdown
