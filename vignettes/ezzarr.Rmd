@@ -22,11 +22,15 @@ knitr::opts_chunk$set(
 
 This vignette describes how to use the `ezzarr` R package, which provides a 
 thin R wrapper around the [`ez-zarr`](https://pypi.org/project/ez-zarr/) 
-python package. `ezzarr` provides an easy 
-way to set up and activate a `conda` environment with all necessary 
-dependencies for `ez-zarr`, and once the environment is activated, the 
-`reticulate` package can be used to access the functionality in `ez-zarr`, 
-to import and interact with image and plate objects from OME-Zarr files in R. 
+python package. For a full documentation of the functionality provided by 
+`ez-zarr`, we refer to the [website](https://fmicompbio.github.io/ez_zarr/). 
+
+`ezzarr` does not add any new functionality compared to the python package, but 
+provides an easy way to set up and activate a `conda` environment with all 
+necessary dependencies for `ez-zarr`, and once the environment is activated in 
+an R session, the `reticulate` package can be used to access the functionality 
+in `ez-zarr`, to import and interact with image and plate objects from OME-Zarr 
+files in R. 
 
 # Load the `ezzarr` package
 
@@ -245,6 +249,51 @@ compiled notebook (not needed for interactive use):
 
 ```{python}
 r.plt.plot()
+```
+
+# Extract subarray
+
+In addition to plotting, `ez-zarr` also contains functionality to extract 
+subarrays of a given image, based on coordinates (given either in pixel space 
+for a given pyramid level, or in micrometers). Here we illustrate this by 
+extracting a subarray defined by a bounding box in the x/y plane (the same 
+area that we zoomed in to above), and displaying the resulting array with the 
+`EBImage` R package. 
+
+```{r}
+out <- img$get_array_by_coordinate(upper_left_yx = c(130, 140), 
+                                   lower_right_yx = c(300, 310), 
+                                   pyramid_level = "0", 
+                                   as_NumPy = TRUE, 
+                                   coordinate_unit = "micrometer")
+
+## Output is an R array
+class(out)
+dim(out)
+
+## Display 2d image
+im <- as.Image(out[1, 1, , ] / 500)
+display(im, method = "raster", interpolate = FALSE)
+```
+
+It is also possible to extract a pair of arrays (from the intensity image and 
+one or more of the provided labels). 
+
+```{r}
+pair <- img$get_array_pair_by_coordinate(label_name = "nuclei", 
+                                         upper_left_yx = c(130, 140),
+                                         lower_right_yx = c(300, 310),
+                                         pyramid_level = "0",
+                                         coordinate_unit = "micrometer")
+
+length(pair)
+
+## Intensity image
+dim(pair[[1]])
+
+## Label(s)
+length(pair[[2]])
+dim(pair[[2]][[1]])
 ```
 
 
