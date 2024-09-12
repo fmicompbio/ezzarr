@@ -1,7 +1,12 @@
 ---
 title: "Using ez-zarr in R"
+author: "Charlotte Soneson, Michael Stadler"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_document
+output: 
+    rmarkdown::html_document:
+        toc: true
+        toc_float: true
+        theme: united
 vignette: >
   %\VignetteIndexEntry{Using ez-zarr in R}
   %\VignetteEngine{knitr::rmarkdown}
@@ -15,6 +20,14 @@ knitr::opts_chunk$set(
 )
 ```
 
+This vignette describes how to use the `ezzarr` R package, which provides a 
+thin R wrapper around the [`ez-zarr`](https://pypi.org/project/ez-zarr/) 
+python package. `ezzarr` provides an easy 
+way to set up and activate a `conda` environment with all necessary 
+dependencies for `ez-zarr`, and once the environment is activated, the 
+`reticulate` package can be used to access the functionality in `ez-zarr`, 
+to import and interact with image and plate objects from OME-Zarr files in R. 
+
 # Load the `ezzarr` package
 
 ```{r setup}
@@ -23,7 +36,9 @@ library(ezzarr)
 
 # Check the version of ez-zarr
 
-This will create the conda environment if it doesn't already exist.
+The `getEzZarrVersion()` function returns the version of `ez-zarr` which will 
+be installed and used by the current version of `ezzarr`. Calling this function 
+will also build the `conda` environment if it does not already exist. 
 
 ```{r}
 getEzZarrVersion()
@@ -31,11 +46,24 @@ getEzZarrVersion()
 
 # Get the path to the environment
 
+`ezzarr` provides a convenience function to get the path to the `ez-zarr` 
+`conda` environment. This can be useful e.g. in order to activate the 
+environment outside of R. 
+
 ```{r}
 getEzZarrEnvPath()
 ```
 
 # Download example data to temporary directory
+
+In the remainder of this vignette, we will illustrate the use of `ezzarr` by
+means of an example data set, representing a maximum intensity projection of 
+one well from a high-content screening plate, processed using 
+[Fractal](https://fractal-analytics-platform.github.io/). The same data set 
+is used in the `ez-zarr` 
+[python documentation](https://fmicompbio.github.io/ez_zarr/getting_started_Image/).
+The data is available on Zenodo; here, we download and unpack it to a temporary 
+directory. 
 
 ```{r}
 td <- tempdir()
@@ -43,23 +71,56 @@ url <- "https://zenodo.org/records/10519143/files/20200812-CardiomyocyteDifferen
 download.file(url, destfile = file.path(td, basename(url)))
 unzip(file.path(td, basename(url)), 
       exdir = td)
+```
+
+Before going further, we save the path to the unpacked data set in the 
+`zarrpath` variable, and explore the content of the directory. 
+
+```{r}
 zarrpath <- file.path(td, sub("\\.zip$", "", basename(url)))
 fs::dir_tree(zarrpath, recurse = 3)
 ```
 
-# Activate the environment and load an example image
+# Activate the environment
+
+Next, we activate the `conda` environment that contains `ez-zarr` and all 
+necessary dependencies, via the `enableEzZarr()` function. In addition to 
+activating the `conda` environment, this function returns a list of imported
+python modules, which can be used to access python functions. 
 
 ```{r}
+## Activate environment
 env <- enableEzZarr()
-print(env$plt$get_backend())
+
+## List imported modules
+names(env)
+
+## Switch matplotlib backend (for non-interactive use)
 env$plt$switch_backend("agg")
-print(env$plt$get_backend())
+```
+
+# Load an example image
+
+Now that the environment is activated, we can import an image from an 
+OME-Zarr fileset. We do this by creating an object of the 
+[`Image`](https://fmicompbio.github.io/ez_zarr/ome_zarr/#src.ez_zarr.ome_zarr.Image) 
+class, defined in `ez-zarr`. 
+
+```{r}
 img <- env$ez_zarr$ome_zarr$Image(path = file.path(zarrpath, "B/03/0"))
+
 img
+
 img$tree(level = 1)
 ```
 
+
 # Get details about the image
+
+`ez-zarr` contains many 
+[methods](https://fmicompbio.github.io/ez_zarr/ome_zarr/#src.ez_zarr.ome_zarr.Image) 
+for accessing various aspects of an `Image` object. Here, we illustrate some 
+of these. 
 
 ```{r}
 ## Channel information
@@ -169,6 +230,11 @@ r.img.plot(label_name = "nuclei",
 ```
 
 # Import and plot entire plate
+
+Above, we imported and visualized a single image. `ez-zarr` also contains 
+classes to represent high-content screening plates or other, arbitrary, 
+collections of images. Here, we use the `import_plate()` function to read the 
+whole plate (note that only one well was imaged). 
 
 ```{r}
 plt <- env$ez_zarr$ome_zarr$import_plate(zarrpath)
