@@ -19,7 +19,8 @@ RoxygenNote: 7.3.2
 StagedInstall: no
 Imports: 
     basilisk,
-    fs
+    fs,
+    reticulate
 Suggests: 
     knitr,
     rmarkdown
