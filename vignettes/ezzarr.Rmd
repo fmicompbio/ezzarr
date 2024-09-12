@@ -55,6 +55,8 @@ print(env$plt$get_backend())
 env$plt$switch_backend("agg")
 print(env$plt$get_backend())
 img <- env$ez_zarr$ome_zarr$Image(path = file.path(zarrpath, "B/03/0"))
+img
+img$tree(level = 1)
 ```
 
 # Get details about the image
