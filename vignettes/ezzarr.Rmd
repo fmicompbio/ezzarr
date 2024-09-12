@@ -84,15 +84,50 @@ img$table_names
 
 # Plot image
 
+Plots in `ez-zarr` are implemented using `matplotlib.pyplot` and display
+correctly when using the plot methods interactively from python
+(e.g. `img.plot()`) or from R via `reticulate` (e.g. `img$plot()`).
+A special case is the use of plot methods in non-interactive Rmarkdown or
+Quarto documents. In these, the plots are only shown for `python` code chunks,
+which is used in the examples below (note the `r.img` syntax to refer to the
+`img` object in the R process).
+
 ## With default settings
 
-```{r}
+```{python}
+r.img.plot()
+```
+
+The corresponding R code (for interactive use) would look like:
+
+```{r, eval = FALSE}
 img$plot()
 ```
 
 ## Adding a scale bar, limiting the channel range
 
-```{r}
+```{python}
+r.img.plot(channels = [0],
+           channel_colors = ["white"],
+           channel_ranges = [[100, 600]],
+           scalebar_micrometer = 150,
+           scalebar_color = "yellow",
+           scalebar_position = "topleft",
+           scalebar_label = True,
+           fig_width_inch = 5,
+           fig_height_inch = 4,
+           fig_dpi = 100,
+           axis_style = "micrometer")
+```
+
+The corresponding R code for interactive is shown below. Please note that
+you need to use specific R data structures to satisfy the expected arguments
+types of the python function. For example, a python list (`[...]`) has to be
+created using an R list (`list(...)`) and not a vector. For a list of
+the conversions that reticulate uses between R and python data structures see
+[reticulate type conversions](https://rstudio.github.io/reticulate/articles/calling_python.html#type-conversions).
+
+```{r, eval=FALSE}
 img$plot(channels = list(0L),
          channel_colors = list("white"),
          channel_ranges = list(c(100, 600)),
@@ -108,36 +143,42 @@ img$plot(channels = list(0L),
 
 ## Zoom in
 
-```{r}
-img$plot(pyramid_level = "0",
-         upper_left_yx = c(130, 140),
-         lower_right_yx = c(300, 310),
-         scalebar_micrometer = 30L,
-         scalebar_color = "magenta",
-         fig_width_inch = 5,
-         fig_height_inch = 5,
-         fig_dpi = 100)
+```{python}
+r.img.plot(pyramid_level = "0",
+           upper_left_yx = [130, 140],
+           lower_right_yx = [300, 310],
+           scalebar_micrometer = 30,
+           scalebar_color = "magenta",
+           fig_width_inch = 5,
+           fig_height_inch = 5,
+           fig_dpi = 100)
 ```
 
 ## Overlay nuclei segmentation
 
-```{r}
-img$plot(label_name = "nuclei", 
-         pyramid_level = "0",
-         upper_left_yx = c(130, 140),
-         lower_right_yx = c(300, 310),
-         scalebar_micrometer = 30L,
-         scalebar_color = "magenta",
-         fig_width_inch = 5,
-         fig_height_inch = 5,
-         fig_dpi = 100)
+```{python}
+r.img.plot(label_name = "nuclei", 
+           pyramid_level = "0",
+           upper_left_yx = [130, 140],
+           lower_right_yx = [300, 310],
+           scalebar_micrometer = 30,
+           scalebar_color = "magenta",
+           fig_width_inch = 5,
+           fig_height_inch = 5,
+           fig_dpi = 100)
 ```
 
 # Import and plot entire plate
 
 ```{r}
 plt <- env$ez_zarr$ome_zarr$import_plate(zarrpath)
-plt$plot()
+```
+
+Again, we use a python code chunk for the plot to be included in our
+compiled notebook (not needed for interactive use):
+
+```{python}
+r.plt.plot()
 ```
 
 
