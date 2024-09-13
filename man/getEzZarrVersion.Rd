@@ -2,16 +2,16 @@
 % Please edit documentation in R/getEzZarrVersion.R
 \name{getEzZarrVersion}
 \alias{getEzZarrVersion}
-\title{Get names of ez-zarr functions}
+\title{Get the version of ez-zarr python package}
 \usage{
 getEzZarrVersion()
 }
 \value{
 A character scalar indicating the version of ez-zarr installed in
-the package environment.
+the conda environment provided with the package.
 }
 \description{
-Get names of ez-zarr functions
+Get the version of ez-zarr python package
 }
 \examples{
 getEzZarrVersion()

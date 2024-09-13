@@ -1,7 +1,7 @@
-#' Get names of ez-zarr functions
+#' Get the version of ez-zarr python package
 #'
 #' @return A character scalar indicating the version of ez-zarr installed in
-#' the package environment.
+#' the conda environment provided with the package.
 #'
 #' @author Charlotte Soneson
 #'
