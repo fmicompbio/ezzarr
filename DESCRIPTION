@@ -22,6 +22,7 @@ Imports:
     fs,
     reticulate
 Suggests: 
+    EBImage,
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)

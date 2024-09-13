@@ -36,6 +36,7 @@ files in R.
 
 ```{r setup}
 library(ezzarr)
+library(EBImage)
 ```
 
 # Check the version of ez-zarr
@@ -272,8 +273,8 @@ class(out)
 dim(out)
 
 ## Display 2d image
-im <- as.Image(out[1, 1, , ] / 500)
-display(im, method = "raster", interpolate = FALSE)
+im <- EBImage::Image(out[1, 1, , ] / 500)
+EBImage::display(im, method = "raster", interpolate = FALSE)
 ```
 
 It is also possible to extract a pair of arrays (from the intensity image and 
