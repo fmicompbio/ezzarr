@@ -160,7 +160,7 @@ which is used in the examples below (note the `r.img` syntax to refer to the
 
 ## With default settings
 
-```{python}
+```{python, dev="png"}
 r.img.plot()
 ```
 
@@ -172,7 +172,7 @@ img$plot()
 
 ## Adding a scale bar, limiting the channel range
 
-```{python}
+```{python, dev="png"}
 r.img.plot(channels = [0],
            channel_colors = ["white"],
            channel_ranges = [[100, 600]],
@@ -209,7 +209,7 @@ img$plot(channels = list(0L),
 
 ## Zoom in
 
-```{python}
+```{python, dev="png"}
 r.img.plot(pyramid_level = "0",
            upper_left_yx = [130, 140],
            lower_right_yx = [300, 310],
@@ -222,7 +222,7 @@ r.img.plot(pyramid_level = "0",
 
 ## Overlay nuclei segmentation
 
-```{python}
+```{python, dev="png"}
 r.img.plot(label_name = "nuclei", 
            pyramid_level = "0",
            upper_left_yx = [130, 140],
@@ -248,7 +248,7 @@ plt <- env$ez_zarr$ome_zarr$import_plate(zarrpath)
 Again, we use a python code chunk for the plot to be included in our
 compiled notebook (not needed for interactive use):
 
-```{python}
+```{python, dev="png"}
 r.plt.plot()
 ```
 
