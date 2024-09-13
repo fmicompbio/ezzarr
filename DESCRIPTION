@@ -2,7 +2,7 @@ Package: ezzarr
 Type: Package
 Title: Set up conda environment for ez-zarr
 Version: 0.1.0
-Date: 2024-09-06
+Date: 2024-09-13
 Authors@R: c(
     person("Charlotte", "Soneson", email = "charlottesoneson@gmail.com",
         role = c("aut", "cre"), comment = c(ORCID = "0000-0003-3833-2169")),
@@ -30,4 +30,3 @@ VignetteBuilder: knitr
 Config/testthat/edition: 3
 URL: https://github.com/fmicompbio/ezzarr
 BugReports: https://github.com/fmicompbio/ezzarr/issues
-
