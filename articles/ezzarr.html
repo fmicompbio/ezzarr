@@ -69,7 +69,7 @@
                         <h4 data-toc-skip class="author">Charlotte
 Soneson, Michael Stadler</h4>
             
-            <h4 data-toc-skip class="date">2024-09-14</h4>
+            <h4 data-toc-skip class="date">2024-09-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/fmicompbio/ezzarr/blob/main/vignettes/ezzarr.Rmd" class="external-link"><code>vignettes/ezzarr.Rmd</code></a></small>
       <div class="hidden name"><code>ezzarr.Rmd</code></div>
@@ -139,7 +139,7 @@ directory.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">zarrpath</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">td</span>, <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">sub</a></span><span class="op">(</span><span class="st">"\\.zip$"</span>, <span class="st">""</span>, <span class="fu"><a href="https://rdrr.io/r/base/basename.html" class="external-link">basename</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html" class="external-link">dir_tree</a></span><span class="op">(</span><span class="va">zarrpath</span>, recurse <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB; font-weight: bold;">/var/folders/py/lcjn3y352g1106vf1rqk521r0000gn/T//RtmpxbSXCT/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr</span></span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB; font-weight: bold;">/var/folders/n3/x0zngmn15fzg2jfkglj4ys4w0000gn/T//RtmpnpC9WB/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr</span></span></span>
 <span><span class="co">#&gt; └── <span style="color: #0000BB; font-weight: bold;">B</span></span></span>
 <span><span class="co">#&gt;     └── <span style="color: #0000BB; font-weight: bold;">03</span></span></span>
 <span><span class="co">#&gt;         └── <span style="color: #0000BB; font-weight: bold;">0</span></span></span>
@@ -181,7 +181,7 @@ class, defined in <code>ez-zarr</code>.</p>
 <span></span>
 <span><span class="va">img</span></span>
 <span><span class="co">#&gt; Image 0</span></span>
-<span><span class="co">#&gt;   path: /var/folders/py/lcjn3y352g1106vf1rqk521r0000gn/T//RtmpxbSXCT/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr/B/03/0</span></span>
+<span><span class="co">#&gt;   path: /var/folders/n3/x0zngmn15fzg2jfkglj4ys4w0000gn/T//RtmpnpC9WB/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr/B/03/0</span></span>
 <span><span class="co">#&gt;   n_channels: 1 (DAPI)</span></span>
 <span><span class="co">#&gt;   n_pyramid_levels: 5</span></span>
 <span><span class="co">#&gt;   pyramid_zyx_scalefactor: [1. 2. 2.]</span></span>
@@ -242,7 +242,7 @@ illustrate some of these.</p>
 <span></span>
 <span><span class="co">## Path</span></span>
 <span><span class="va">img</span><span class="op">$</span><span class="fu">get_path</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/var/folders/py/lcjn3y352g1106vf1rqk521r0000gn/T//RtmpxbSXCT/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr/B/03/0"</span></span>
+<span><span class="co">#&gt; [1] "/var/folders/n3/x0zngmn15fzg2jfkglj4ys4w0000gn/T//RtmpnpC9WB/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr/B/03/0"</span></span>
 <span></span>
 <span><span class="co">## Image name</span></span>
 <span><span class="va">img</span><span class="op">$</span><span class="va">name</span></span>
@@ -453,7 +453,7 @@ image and one or more of the provided labels).</p>
 <span><span class="co">#&gt; [37] withr_3.0.1           pkgdown_2.1.0.9000    digest_0.6.37        </span></span>
 <span><span class="co">#&gt; [40] grid_4.4.1            locfit_1.5-9.10       basilisk_1.17.2      </span></span>
 <span><span class="co">#&gt; [43] lifecycle_1.0.4       vctrs_0.6.5           glue_1.7.0           </span></span>
-<span><span class="co">#&gt; [46] evaluate_0.24.0       ragg_1.3.3            abind_1.4-8          </span></span>
+<span><span class="co">#&gt; [46] evaluate_1.0.0        ragg_1.3.3            abind_1.4-8          </span></span>
 <span><span class="co">#&gt; [49] RCurl_1.98-1.16       fansi_1.0.6           rmarkdown_2.28       </span></span>
 <span><span class="co">#&gt; [52] pkgconfig_2.0.3       basilisk.utils_1.17.3 tools_4.4.1          </span></span>
 <span><span class="co">#&gt; [55] jpeg_0.1-10           htmltools_0.5.8.1</span></span></code></pre></div>
@@ -470,7 +470,7 @@ image and one or more of the provided labels).</p>
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by Charlotte Soneson, Michael Stadler.</p>
+<p>Developed by Charlotte Soneson, Michael Stadler, Silvia Barbiero.</p>
 </div>
 
 <div class="pkgdown">

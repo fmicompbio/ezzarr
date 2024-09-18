@@ -1,6 +1,6 @@
 pandoc: 3.1.11
 pkgdown: 2.1.0.9000
-pkgdown_sha: 800340f4b1b6d5c8c0c3510ef34776436b14b298
+pkgdown_sha: ae56105fc19c8968d35bbd3227903321db420e54
 articles:
   ezzarr: ezzarr.html
-last_built: 2024-09-14T11:45Z
+last_built: 2024-09-18T05:42Z
