@@ -1,6 +1,9 @@
 pandoc: 3.1.11
-pkgdown: 2.1.0.9000
-pkgdown_sha: ae56105fc19c8968d35bbd3227903321db420e54
+pkgdown: 2.1.1.9000
+pkgdown_sha: 71fd32ce95f17b379e57e7e33f2294bc034727fd
 articles:
   ezzarr: ezzarr.html
-last_built: 2024-09-18T05:42Z
+last_built: 2024-10-10T16:02Z
+urls:
+  reference: https://fmicompbio.github.io/ezzarr/reference
+  article: https://fmicompbio.github.io/ezzarr/articles
