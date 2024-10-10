@@ -4,7 +4,7 @@
     "python==3.12"
 )
 .pip_dependencies <- c(
-    "ez_zarr==0.3.2"
+    "ez_zarr==0.3.3"
 )
 
 ezzarrenv <- BasiliskEnvironment(
