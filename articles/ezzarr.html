@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ezzarr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,6 +31,7 @@
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="../articles/ezzarr.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -54,7 +55,7 @@
                         <h4 data-toc-skip class="author">Charlotte
 Soneson, Michael Stadler</h4>
             
-            <h4 data-toc-skip class="date">2024-10-14</h4>
+            <h4 data-toc-skip class="date">2024-10-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/fmicompbio/ezzarr/blob/main/vignettes/ezzarr.Rmd" class="external-link"><code>vignettes/ezzarr.Rmd</code></a></small>
       <div class="d-none name"><code>ezzarr.Rmd</code></div>
@@ -89,7 +90,7 @@ version of <code>ezzarr</code>. Calling this function will also build
 the <code>conda</code> environment if it does not already exist.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/getEzZarrVersion.html">getEzZarrVersion</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "0.3.3"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "0.3.4"</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="get-the-path-to-the-environment">Get the path to the environment<a class="anchor" aria-label="anchor" href="#get-the-path-to-the-environment"></a>
@@ -99,7 +100,7 @@ to the <code>ez-zarr</code> <code>conda</code> environment. This can be
 useful e.g. in order to activate the environment outside of R.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/getEzZarrEnvPath.html">getEzZarrEnvPath</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/Users/runner/Library/Caches/org.R-project.R/R/basilisk/1.17.2/ezzarr/0.1.1/ezzarr"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "/Users/runner/Library/Caches/org.R-project.R/R/basilisk/1.17.2/ezzarr/0.1.2/ezzarr"</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="download-example-data-to-temporary-directory">Download example data to temporary directory<a class="anchor" aria-label="anchor" href="#download-example-data-to-temporary-directory"></a>
@@ -123,7 +124,7 @@ directory.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">zarrpath</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">td</span>, <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">sub</a></span><span class="op">(</span><span class="st">"\\.zip$"</span>, <span class="st">""</span>, <span class="fu"><a href="https://rdrr.io/r/base/basename.html" class="external-link">basename</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html" class="external-link">dir_tree</a></span><span class="op">(</span><span class="va">zarrpath</span>, recurse <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB; font-weight: bold;">/var/folders/t_/mmhnh941511_hp2lwh383bp00000gn/T//Rtmp9oet5O/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr</span></span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB; font-weight: bold;">/var/folders/t_/mmhnh941511_hp2lwh383bp00000gn/T//Rtmp98uMat/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr</span></span></span>
 <span><span class="co">#&gt; └── <span style="color: #0000BB; font-weight: bold;">B</span></span></span>
 <span><span class="co">#&gt;     └── <span style="color: #0000BB; font-weight: bold;">03</span></span></span>
 <span><span class="co">#&gt;         └── <span style="color: #0000BB; font-weight: bold;">0</span></span></span>
@@ -165,7 +166,7 @@ class, defined in <code>ez-zarr</code>.</p>
 <span></span>
 <span><span class="va">img</span></span>
 <span><span class="co">#&gt; Image 0</span></span>
-<span><span class="co">#&gt;   path: /var/folders/t_/mmhnh941511_hp2lwh383bp00000gn/T//Rtmp9oet5O/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr/B/03/0</span></span>
+<span><span class="co">#&gt;   path: /var/folders/t_/mmhnh941511_hp2lwh383bp00000gn/T//Rtmp98uMat/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr/B/03/0</span></span>
 <span><span class="co">#&gt;   n_channels: 1 (DAPI)</span></span>
 <span><span class="co">#&gt;   n_pyramid_levels: 5</span></span>
 <span><span class="co">#&gt;   pyramid_zyx_scalefactor: [1. 2. 2.]</span></span>
@@ -226,7 +227,7 @@ illustrate some of these.</p>
 <span></span>
 <span><span class="co">## Path</span></span>
 <span><span class="va">img</span><span class="op">$</span><span class="fu">get_path</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/var/folders/t_/mmhnh941511_hp2lwh383bp00000gn/T//Rtmp9oet5O/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr/B/03/0"</span></span>
+<span><span class="co">#&gt; [1] "/var/folders/t_/mmhnh941511_hp2lwh383bp00000gn/T//Rtmp98uMat/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr/B/03/0"</span></span>
 <span></span>
 <span><span class="co">## Image name</span></span>
 <span><span class="va">img</span><span class="op">$</span><span class="va">name</span></span>
@@ -327,7 +328,7 @@ type conversions</a>.</p>
 <span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a>           fig_width_inch <span class="op">=</span> <span class="dv">5</span>,</span>
 <span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a>           fig_height_inch <span class="op">=</span> <span class="dv">5</span>,</span>
 <span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a>           fig_dpi <span class="op">=</span> <span class="dv">100</span>)</span>
-<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co">#&gt; /Users/runner/Library/Caches/org.R-project.R/R/basilisk/1.17.2/ezzarr/0.1.1/ezzarr/lib/python3.10/site-packages/ez_zarr/ome_zarr.py:845: UserWarning: For the requested pyramid level (0) of the intensity image, no matching label ('nuclei') is available. Up-scaling the label using factor(s) [1. 4. 4.]</span></span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co">#&gt; /Users/runner/Library/Caches/org.R-project.R/R/basilisk/1.17.2/ezzarr/0.1.2/ezzarr/lib/python3.10/site-packages/ez_zarr/ome_zarr.py:865: UserWarning: For the requested pyramid level (0) of the intensity image, no matching label ('nuclei') is available. Up-scaling the label using factor(s) [1. 4. 4.]</span></span>
 <span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="co">#&gt;   warnings.warn(f"For the requested pyramid level ({pyramid_level}) of the intensity image, no matching label ('{lname}') is available. Up-scaling the label using factor(s) {scalefact_yx}")</span></span></code></pre></div>
 <p><img src="ezzarr_files/figure-html/unnamed-chunk-14-3.png" width="480"></p>
 </div>
@@ -419,7 +420,7 @@ image and one or more of the provided labels).</p>
 <span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt; [1] EBImage_4.47.0 ezzarr_0.1.1  </span></span>
+<span><span class="co">#&gt; [1] EBImage_4.47.1 ezzarr_0.1.2  </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
 <span><span class="co">#&gt;  [1] Matrix_1.7-0          jsonlite_1.8.9        highr_0.11           </span></span>
@@ -437,7 +438,7 @@ image and one or more of the provided labels).</p>
 <span><span class="co">#&gt; [37] withr_3.0.1           pkgdown_2.1.1.9000    digest_0.6.37        </span></span>
 <span><span class="co">#&gt; [40] grid_4.4.1            locfit_1.5-9.10       basilisk_1.17.2      </span></span>
 <span><span class="co">#&gt; [43] lifecycle_1.0.4       vctrs_0.6.5           glue_1.8.0           </span></span>
-<span><span class="co">#&gt; [46] evaluate_1.0.0        ragg_1.3.3            abind_1.4-8          </span></span>
+<span><span class="co">#&gt; [46] evaluate_1.0.1        ragg_1.3.3            abind_1.4-8          </span></span>
 <span><span class="co">#&gt; [49] RCurl_1.98-1.16       fansi_1.0.6           rmarkdown_2.28       </span></span>
 <span><span class="co">#&gt; [52] pkgconfig_2.0.3       basilisk.utils_1.17.3 tools_4.4.1          </span></span>
 <span><span class="co">#&gt; [55] jpeg_0.1-10           htmltools_0.5.8.1</span></span></code></pre></div>
