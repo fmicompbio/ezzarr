@@ -84,7 +84,7 @@ jobs:
         run: |
           brew install harfbuzz
           brew install fribidi
-          brew install pkg-config cairo libpng giflib jpeg
+          brew install libjpeg
 
       - name: Install dependencies
         run: |
