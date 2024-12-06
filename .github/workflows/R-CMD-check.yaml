@@ -87,13 +87,15 @@ jobs:
           brew install libjpeg jpeg
           echo 'export PATH="/opt/homebrew/opt/jpeg/bin:$PATH"' >> /Users/runner/.bash_profile
 
+      - name: Set environment variables
+          if: runner.os == 'macOS'
+          run: echo "PKG_CONFIG_PATH=$(brew --prefix jpeg)/lib/pkgconfig" >> $GITHUB_ENV
+
       - name: Install dependencies
         if: runner.os == 'macOS'
         env:
-          LDFLAGS: "-L/opt/homebrew/opt/jpeg/lib"
-          CPPFLAGS: "-I/opt/homebrew/opt/jpeg/include"
-          PKG_CONFIG_PATH: "/opt/homebrew/opt/jpeg/lib/pkgconfig"
-          CFLAGS: "-I/opt/homebrew/include"
+          CPPFLAGS: "-I$(brew --prefix jpeg)/include"
+          LDFLAGS: "-L$(brew --prefix jpeg)/lib"
         run: |
           local_deps <- remotes::local_package_deps(dependencies = TRUE)
           deps <- remotes::dev_package_deps(dependencies = TRUE, repos = BiocManager::repositories())
