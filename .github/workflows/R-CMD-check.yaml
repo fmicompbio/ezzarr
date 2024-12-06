@@ -88,8 +88,8 @@ jobs:
           echo 'export PATH="/opt/homebrew/opt/jpeg/bin:$PATH"' >> /Users/runner/.bash_profile
 
       - name: Set environment variables
-          if: runner.os == 'macOS'
-          run: echo "PKG_CONFIG_PATH=$(brew --prefix jpeg)/lib/pkgconfig" >> $GITHUB_ENV
+        if: runner.os == 'macOS'
+        run: echo "PKG_CONFIG_PATH=$(brew --prefix jpeg)/lib/pkgconfig" >> $GITHUB_ENV
 
       - name: Install dependencies
         if: runner.os == 'macOS'
