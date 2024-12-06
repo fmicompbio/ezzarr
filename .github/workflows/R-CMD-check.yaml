@@ -89,7 +89,7 @@ jobs:
 
       - name: Install dependencies
         if: runner.os == 'macOS'
-        env: |
+        env:
           LDFLAGS:"-L/opt/homebrew/opt/jpeg/lib"
           CPPFLAGS:"-I/opt/homebrew/opt/jpeg/include"
           PKG_CONFIG_PATH:"/opt/homebrew/opt/jpeg/lib/pkgconfig"
