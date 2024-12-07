@@ -84,7 +84,7 @@ jobs:
         run: |
           brew install harfbuzz
           brew install fribidi
-          brew install jpeg
+          brew install jpeg fftw
           mkdir -p /Users/runner/.R
           touch /Users/runner/.R/Makevars
           echo 'export CPPFLAGS="-I/opt/homebrew/opt/jpeg/include"' >> /Users/runner/.R/Makevars
