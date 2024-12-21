@@ -3,7 +3,7 @@ pkgdown: 2.1.1.9000
 pkgdown_sha: 5c03b7444923f7c797b8b283e175f8eed63797a7
 articles:
   ezzarr: ezzarr.html
-last_built: 2024-12-19T16:48Z
+last_built: 2024-12-21T18:08Z
 urls:
   reference: https://fmicompbio.github.io/ezzarr/reference
   article: https://fmicompbio.github.io/ezzarr/articles
