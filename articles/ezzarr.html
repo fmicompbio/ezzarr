@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ezzarr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,7 +55,7 @@
                         <h4 data-toc-skip class="author">Charlotte
 Soneson, Michael Stadler</h4>
             
-            <h4 data-toc-skip class="date">2025-01-09</h4>
+            <h4 data-toc-skip class="date">2025-04-05</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/fmicompbio/ezzarr/blob/main/vignettes/ezzarr.Rmd" class="external-link"><code>vignettes/ezzarr.Rmd</code></a></small>
       <div class="d-none name"><code>ezzarr.Rmd</code></div>
@@ -90,7 +90,7 @@ version of <code>ezzarr</code>. Calling this function will also build
 the <code>conda</code> environment if it does not already exist.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/getEzZarrVersion.html">getEzZarrVersion</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "0.3.5"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "0.3.7"</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="get-the-path-to-the-environment">Get the path to the environment<a class="anchor" aria-label="anchor" href="#get-the-path-to-the-environment"></a>
@@ -100,7 +100,7 @@ to the <code>ez-zarr</code> <code>conda</code> environment. This can be
 useful e.g. in order to activate the environment outside of R.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/getEzZarrEnvPath.html">getEzZarrEnvPath</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/Users/runner/Library/Caches/org.R-project.R/R/basilisk/1.19.0/ezzarr/0.1.3/ezzarr"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "/Users/runner/Library/Caches/org.R-project.R/R/basilisk/1.19.3/ezzarr/0.1.4/ezzarr"</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="download-example-data-to-temporary-directory">Download example data to temporary directory<a class="anchor" aria-label="anchor" href="#download-example-data-to-temporary-directory"></a>
@@ -124,7 +124,7 @@ directory.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">zarrpath</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">td</span>, <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">sub</a></span><span class="op">(</span><span class="st">"\\.zip$"</span>, <span class="st">""</span>, <span class="fu"><a href="https://rdrr.io/r/base/basename.html" class="external-link">basename</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html" class="external-link">dir_tree</a></span><span class="op">(</span><span class="va">zarrpath</span>, recurse <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB; font-weight: bold;">/var/folders/ml/x_tvfgn50_s7p67dm1ypcqqm0000gn/T//Rtmpiz5Oas/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr</span></span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB; font-weight: bold;">/var/folders/qn/7t0vq3ts721cmgt0tgrtgzl80000gn/T//Rtmpg3Prdq/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr</span></span></span>
 <span><span class="co">#&gt; └── <span style="color: #0000BB; font-weight: bold;">B</span></span></span>
 <span><span class="co">#&gt;     └── <span style="color: #0000BB; font-weight: bold;">03</span></span></span>
 <span><span class="co">#&gt;         └── <span style="color: #0000BB; font-weight: bold;">0</span></span></span>
@@ -166,7 +166,7 @@ class, defined in <code>ez-zarr</code>.</p>
 <span></span>
 <span><span class="va">img</span></span>
 <span><span class="co">#&gt; Image 0</span></span>
-<span><span class="co">#&gt;   path: /var/folders/ml/x_tvfgn50_s7p67dm1ypcqqm0000gn/T//Rtmpiz5Oas/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr/B/03/0</span></span>
+<span><span class="co">#&gt;   path: /var/folders/qn/7t0vq3ts721cmgt0tgrtgzl80000gn/T//Rtmpg3Prdq/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr/B/03/0</span></span>
 <span><span class="co">#&gt;   n_channels: 1 (DAPI)</span></span>
 <span><span class="co">#&gt;   n_pyramid_levels: 5</span></span>
 <span><span class="co">#&gt;   pyramid_zyx_scalefactor: [1. 2. 2.]</span></span>
@@ -227,7 +227,7 @@ illustrate some of these.</p>
 <span></span>
 <span><span class="co">## Path</span></span>
 <span><span class="va">img</span><span class="op">$</span><span class="fu">get_path</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/var/folders/ml/x_tvfgn50_s7p67dm1ypcqqm0000gn/T//Rtmpiz5Oas/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr/B/03/0"</span></span>
+<span><span class="co">#&gt; [1] "/var/folders/qn/7t0vq3ts721cmgt0tgrtgzl80000gn/T//Rtmpg3Prdq/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr/B/03/0"</span></span>
 <span></span>
 <span><span class="co">## Image name</span></span>
 <span><span class="va">img</span><span class="op">$</span><span class="va">name</span></span>
@@ -328,7 +328,7 @@ type conversions</a>.</p>
 <span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a>           fig_width_inch <span class="op">=</span> <span class="dv">5</span>,</span>
 <span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a>           fig_height_inch <span class="op">=</span> <span class="dv">5</span>,</span>
 <span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a>           fig_dpi <span class="op">=</span> <span class="dv">100</span>)</span>
-<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co">#&gt; /Users/runner/Library/Caches/org.R-project.R/R/basilisk/1.19.0/ezzarr/0.1.3/ezzarr/lib/python3.10/site-packages/ez_zarr/ome_zarr.py:865: UserWarning: For the requested pyramid level (0) of the intensity image, no matching label ('nuclei') is available. Up-scaling the label using factor(s) [1. 4. 4.]</span></span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co">#&gt; /Users/runner/Library/Caches/org.R-project.R/R/basilisk/1.19.3/ezzarr/0.1.4/ezzarr/lib/python3.10/site-packages/ez_zarr/ome_zarr.py:868: UserWarning: For the requested pyramid level (0) of the intensity image, no matching label ('nuclei') is available. Up-scaling the label using factor(s) [1. 4. 4.]</span></span>
 <span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="co">#&gt;   warnings.warn(f"For the requested pyramid level ({pyramid_level}) of the intensity image, no matching label ('{lname}') is available. Up-scaling the label using factor(s) {scalefact_yx}")</span></span></code></pre></div>
 <p><img src="ezzarr_files/figure-html/unnamed-chunk-14-3.png" width="480"></p>
 </div>
@@ -402,13 +402,13 @@ image and one or more of the provided labels).</p>
 </h2>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; R Under development (unstable) (2025-01-03 r87521)</span></span>
+<span><span class="co">#&gt; R Under development (unstable) (2025-04-04 r88112)</span></span>
 <span><span class="co">#&gt; Platform: aarch64-apple-darwin20</span></span>
-<span><span class="co">#&gt; Running under: macOS Sonoma 14.7.2</span></span>
+<span><span class="co">#&gt; Running under: macOS Sonoma 14.7.4</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Matrix products: default</span></span>
-<span><span class="co">#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRblas.0.dylib </span></span>
-<span><span class="co">#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0</span></span>
+<span><span class="co">#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.6-arm64/Resources/lib/libRblas.0.dylib </span></span>
+<span><span class="co">#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.6-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; locale:</span></span>
 <span><span class="co">#&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8</span></span>
@@ -420,27 +420,27 @@ image and one or more of the provided labels).</p>
 <span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt; [1] EBImage_4.49.0 ezzarr_0.1.3  </span></span>
+<span><span class="co">#&gt; [1] EBImage_4.49.0 ezzarr_0.1.4  </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
-<span><span class="co">#&gt;  [1] Matrix_1.7-1          jsonlite_1.8.9        crayon_1.5.3         </span></span>
-<span><span class="co">#&gt;  [4] compiler_4.5.0        filelock_1.0.3        Rcpp_1.0.13-1        </span></span>
-<span><span class="co">#&gt;  [7] bitops_1.0-9          parallel_4.5.0        jquerylib_0.1.4      </span></span>
-<span><span class="co">#&gt; [10] systemfonts_1.1.0     textshaping_0.4.1     png_0.1-8            </span></span>
-<span><span class="co">#&gt; [13] yaml_2.3.10           fastmap_1.2.0         reticulate_1.40.0    </span></span>
-<span><span class="co">#&gt; [16] lattice_0.22-6        R6_2.5.1              generics_0.1.3       </span></span>
-<span><span class="co">#&gt; [19] knitr_1.49            BiocGenerics_0.53.3   htmlwidgets_1.6.4    </span></span>
+<span><span class="co">#&gt;  [1] Matrix_1.7-3          jsonlite_2.0.0        crayon_1.5.3         </span></span>
+<span><span class="co">#&gt;  [4] compiler_4.6.0        filelock_1.0.3        Rcpp_1.0.14          </span></span>
+<span><span class="co">#&gt;  [7] bitops_1.0-9          parallel_4.6.0        jquerylib_0.1.4      </span></span>
+<span><span class="co">#&gt; [10] systemfonts_1.2.2     textshaping_1.0.0     png_0.1-8            </span></span>
+<span><span class="co">#&gt; [13] yaml_2.3.10           fastmap_1.2.0         reticulate_1.42.0    </span></span>
+<span><span class="co">#&gt; [16] lattice_0.22-7        R6_2.6.1              generics_0.1.3       </span></span>
+<span><span class="co">#&gt; [19] knitr_1.50            BiocGenerics_0.53.6   htmlwidgets_1.6.4    </span></span>
 <span><span class="co">#&gt; [22] tibble_3.2.1          desc_1.4.3            fftwtools_0.9-11     </span></span>
-<span><span class="co">#&gt; [25] pillar_1.10.1         bslib_0.8.0           tiff_0.1-12          </span></span>
-<span><span class="co">#&gt; [28] rlang_1.1.4           cachem_1.1.0          dir.expiry_1.15.0    </span></span>
-<span><span class="co">#&gt; [31] xfun_0.50             fs_1.6.5              sass_0.4.9           </span></span>
-<span><span class="co">#&gt; [34] cli_3.6.3             magrittr_2.0.3        withr_3.0.2          </span></span>
-<span><span class="co">#&gt; [37] pkgdown_2.1.1.9000    digest_0.6.37         grid_4.5.0           </span></span>
-<span><span class="co">#&gt; [40] locfit_1.5-9.10       basilisk_1.19.0       lifecycle_1.0.4      </span></span>
-<span><span class="co">#&gt; [43] vctrs_0.6.5           glue_1.8.0            evaluate_1.0.1       </span></span>
+<span><span class="co">#&gt; [25] pillar_1.10.1         bslib_0.9.0           tiff_0.1-12          </span></span>
+<span><span class="co">#&gt; [28] rlang_1.1.5           cachem_1.1.0          dir.expiry_1.15.0    </span></span>
+<span><span class="co">#&gt; [31] xfun_0.52             fs_1.6.5              sass_0.4.9           </span></span>
+<span><span class="co">#&gt; [34] cli_3.6.4             magrittr_2.0.3        withr_3.0.2          </span></span>
+<span><span class="co">#&gt; [37] pkgdown_2.1.1.9000    digest_0.6.37         grid_4.6.0           </span></span>
+<span><span class="co">#&gt; [40] locfit_1.5-9.11       basilisk_1.19.3       lifecycle_1.0.4      </span></span>
+<span><span class="co">#&gt; [43] vctrs_0.6.5           glue_1.8.0            evaluate_1.0.3       </span></span>
 <span><span class="co">#&gt; [46] ragg_1.3.3            RCurl_1.98-1.16       abind_1.4-8          </span></span>
-<span><span class="co">#&gt; [49] rmarkdown_2.29        pkgconfig_2.0.3       basilisk.utils_1.19.0</span></span>
-<span><span class="co">#&gt; [52] tools_4.5.0           jpeg_0.1-10           htmltools_0.5.8.1</span></span></code></pre></div>
+<span><span class="co">#&gt; [49] rmarkdown_2.29        pkgconfig_2.0.3       basilisk.utils_1.19.1</span></span>
+<span><span class="co">#&gt; [52] tools_4.6.0           jpeg_0.1-10           htmltools_0.5.8.1</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
