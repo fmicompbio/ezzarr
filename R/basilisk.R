@@ -1,16 +1,13 @@
 #' @importFrom basilisk BasiliskEnvironment
 
-.conda_dependencies <- c(
-    "python==3.10"
-)
 .pip_dependencies <- c(
-    "ez_zarr==0.3.7"
+    "python==3.10",
+    "ez_zarr==0.3.8"
 )
 
 ezzarrenv <- BasiliskEnvironment(
     envname = "ezzarr", pkgname = "ezzarr",
-    packages = .conda_dependencies,
-    channels = c("conda-forge"),
+    packages = c(),
     pip = .pip_dependencies
 )
 
