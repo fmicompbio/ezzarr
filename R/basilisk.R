@@ -7,7 +7,7 @@
 
 ezzarrenv <- BasiliskEnvironment(
     envname = "ezzarr", pkgname = "ezzarr",
-    packages = c(),
+    packages = character(0),
     pip = .pip_dependencies
 )
 
