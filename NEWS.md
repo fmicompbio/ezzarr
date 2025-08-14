@@ -1,3 +1,7 @@
+# ezzarr 0.1.6
+
+* Update ez-zarr to v0.4.0
+
 # ezzarr 0.1.5
 
 * Update ez-zarr to v0.3.8

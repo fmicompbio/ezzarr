@@ -1,8 +1,8 @@
 Package: ezzarr
 Type: Package
 Title: Set up conda environment for ez-zarr
-Version: 0.1.5
-Date: 2024-12-19
+Version: 0.1.6
+Date: 2025-08-14
 Authors@R: c(
     person("Charlotte", "Soneson", email = "charlottesoneson@gmail.com",
         role = c("aut", "cre"), comment = c(ORCID = "0000-0003-3833-2169")),
