@@ -1,10 +1,10 @@
 #' @importFrom basilisk BasiliskEnvironment
 
 .conda_dependencies <- c(
-    "python==3.13"
+    "python==3.12"
 )
 .pip_dependencies <- c(
-    "ez_zarr==0.4.0"
+    "ez_zarr==0.4.1"
 )
 
 ezzarrenv <- BasiliskEnvironment(
