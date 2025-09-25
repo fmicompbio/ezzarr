@@ -13,7 +13,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
+```{r chunk-opts, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -34,7 +34,7 @@ files in R.
 
 # Load the `ezzarr` package
 
-```{r setup}
+```{r load-pkg}
 library(ezzarr)
 library(EBImage)
 ```
@@ -45,7 +45,7 @@ The `getEzZarrVersion()` function returns the version of `ez-zarr` which will
 be installed and used by the current version of `ezzarr`. Calling this function 
 will also build the `conda` environment if it does not already exist. 
 
-```{r}
+```{r get-ezzarr-version}
 getEzZarrVersion()
 ```
 
@@ -55,7 +55,7 @@ getEzZarrVersion()
 `conda` environment. This can be useful e.g. in order to activate the 
 environment outside of R. 
 
-```{r}
+```{r get-ezzarr-envpath}
 getEzZarrEnvPath()
 ```
 
@@ -70,7 +70,7 @@ is used in the `ez-zarr`
 The data is available on Zenodo; here, we download and unpack it to a temporary 
 directory. 
 
-```{r}
+```{r get-data}
 td <- tempdir()
 url <- "https://zenodo.org/records/10519143/files/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr.zip"
 download.file(url, destfile = file.path(td, basename(url)))
@@ -81,7 +81,7 @@ unzip(file.path(td, basename(url)),
 Before going further, we save the path to the unpacked data set in the 
 `zarrpath` variable, and explore the content of the directory. 
 
-```{r}
+```{r show-data}
 zarrpath <- file.path(td, sub("\\.zip$", "", basename(url)))
 fs::dir_tree(zarrpath, recurse = 3)
 ```
@@ -93,7 +93,7 @@ necessary dependencies, via the `enableEzZarr()` function. In addition to
 activating the `conda` environment, this function returns a list of imported
 python modules, which can be used to access python functions. 
 
-```{r}
+```{r activate-env}
 ## Activate environment
 env <- enableEzZarr()
 
@@ -111,8 +111,12 @@ OME-Zarr fileset. We do this by creating an object of the
 [`Image`](https://fmicompbio.github.io/ez_zarr/ome_zarr/#src.ez_zarr.ome_zarr.Image) 
 class, defined in `ez-zarr`. 
 
-```{r}
-img <- env$ez_zarr$ome_zarr$Image(path = file.path(zarrpath, "B/03/0"))
+```{r load-image}
+## Capture the output from python since user warnings from Zarr may 
+## otherwise stall the vignette building (when run non-interactively).
+res <- reticulate::py_capture_output({
+    img <- env$ez_zarr$ome_zarr$Image(path = file.path(zarrpath, "B/03/0"))
+})
 
 img
 
@@ -127,7 +131,7 @@ img$tree(level = 1)
 for accessing various aspects of an `Image` object. Here, we illustrate some 
 of these. 
 
-```{r}
+```{r get-details}
 ## Channel information
 length(img$nchannels_image)
 img$channels[[1]]
@@ -160,19 +164,19 @@ which is used in the examples below (note the `r.img` syntax to refer to the
 
 ## With default settings
 
-```{python, dev="png"}
+```{python py-plot-img, dev="png"}
 r.img.plot()
 ```
 
 The corresponding R code (for interactive use) would look like:
 
-```{r, eval = FALSE}
+```{r r-plot-img, eval = FALSE}
 img$plot()
 ```
 
 ## Adding a scale bar, limiting the channel range
 
-```{python, dev="png"}
+```{python py-add-scalebar, dev="png"}
 r.img.plot(channels = [0],
            channel_colors = ["white"],
            channel_ranges = [[100, 600]],
@@ -193,7 +197,7 @@ created using an R list (`list(...)`) and not a vector. For a list of
 the conversions that reticulate uses between R and python data structures see
 [reticulate type conversions](https://rstudio.github.io/reticulate/articles/calling_python.html#type-conversions).
 
-```{r, eval=FALSE}
+```{r r-add-scalebar, eval=FALSE}
 img$plot(channels = list(0L),
          channel_colors = list("white"),
          channel_ranges = list(c(100, 600)),
@@ -209,7 +213,7 @@ img$plot(channels = list(0L),
 
 ## Zoom in
 
-```{python, dev="png"}
+```{python py-zoom-in, dev="png"}
 r.img.plot(pyramid_level = "0",
            upper_left_yx = [130, 140],
            lower_right_yx = [300, 310],
@@ -222,7 +226,7 @@ r.img.plot(pyramid_level = "0",
 
 ## Overlay nuclei segmentation
 
-```{python, dev="png"}
+```{python py-labels, dev="png"}
 r.img.plot(label_name = "nuclei", 
            pyramid_level = "0",
            upper_left_yx = [130, 140],
@@ -241,14 +245,16 @@ classes to represent high-content screening plates or other, arbitrary,
 collections of images. Here, we use the `import_plate()` function to read the 
 whole plate (note that only one well was imaged). 
 
-```{r}
-plt <- env$ez_zarr$ome_zarr$import_plate(zarrpath)
+```{r import-plate}
+res <- reticulate::py_capture_output({
+    plt <- env$ez_zarr$ome_zarr$import_plate(zarrpath)
+})
 ```
 
 Again, we use a python code chunk for the plot to be included in our
 compiled notebook (not needed for interactive use):
 
-```{python, dev="png"}
+```{python py-plot-plate, dev="png"}
 r.plt.plot()
 ```
 
@@ -261,7 +267,7 @@ extracting a subarray defined by a bounding box in the x/y plane (the same
 area that we zoomed in to above), and displaying the resulting array with the 
 `EBImage` R package. 
 
-```{r}
+```{r get-array}
 out <- img$get_array_by_coordinate(upper_left_yx = c(130, 140), 
                                    lower_right_yx = c(300, 310), 
                                    pyramid_level = "0", 
@@ -280,7 +286,7 @@ EBImage::display(im, method = "raster", interpolate = FALSE)
 It is also possible to extract a pair of arrays (from the intensity image and 
 one or more of the provided labels). 
 
-```{r}
+```{r get-array-pair}
 pair <- img$get_array_pair_by_coordinate(label_name = "nuclei", 
                                          upper_left_yx = c(130, 140),
                                          lower_right_yx = c(300, 310),
@@ -300,7 +306,7 @@ dim(pair[[2]][[1]])
 
 # Session info
 
-```{r}
+```{r session-info}
 sessionInfo()
 ```
 
