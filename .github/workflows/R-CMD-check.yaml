@@ -20,9 +20,9 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - { os: windows-latest, bioc: 'release'}
-        - { os: macOS-latest, bioc: 'release', curlConfigPath: '/usr/bin/'}
-        - { os: ubuntu-latest, bioc: 'release'}
+        - { os: windows-latest, bioc: '3.22'}
+        - { os: macOS-latest, bioc: '3.22', curlConfigPath: '/usr/bin/'}
+        - { os: ubuntu-latest, bioc: '3.22'}
         #- { os: ubuntu-latest, image: 'bioconductor/bioconductor_docker:devel'}
 
     env:
