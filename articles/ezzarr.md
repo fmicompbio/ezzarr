@@ -70,7 +70,7 @@ Before going further, we save the path to the unpacked data set in the
 ``` r
 zarrpath <- file.path(td, sub("\\.zip$", "", basename(url)))
 fs::dir_tree(zarrpath, recurse = 3)
-#> /var/folders/xc/cl1fyykn2pj4ryhdw6r1mqtc0000gn/T//RtmppWK5av/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr
+#> /var/folders/6c/pzd640_546q6_yfn24r65c_40000gn/T//RtmpIVp6zJ/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr
 #> └── B
 #>     └── 03
 #>         └── 0
@@ -120,13 +120,13 @@ res <- reticulate::py_capture_output({
 
 img
 #> Image 0
-#>   path: /var/folders/xc/cl1fyykn2pj4ryhdw6r1mqtc0000gn/T//RtmppWK5av/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr/B/03/0
+#>   path: /var/folders/6c/pzd640_546q6_yfn24r65c_40000gn/T//RtmpIVp6zJ/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr/B/03/0
 #>   n_channels: 1 (DAPI)
 #>   n_pyramid_levels: 5
 #>   pyramid_zyx_scalefactor: [1. 2. 2.]
 #>   full_resolution_zyx_spacing (micrometer): [1.0, 0.1625, 0.1625]
 #>   segmentations: empty, nuclei
-#>   tables (measurements): nuclei_ROI_table, expected_table_masked_nuclei_ROI_table_1_True_0_0, expected_table_FOV_ROI_table_1_True_0_0, expected_table_well_ROI_table_3_True_0_0, expected_table_masked_nuclei_ROI_table_0_True_0_0, expected_table_well_ROI_table_3_False_0_0, FOV_ROI_table, expected_table_FOV_ROI_table_1_False_0_0, well_ROI_table, nuclei, expected_table_well_ROI_table_0_True_0_0
+#>   tables (measurements): nuclei_ROI_table, expected_table_FOV_ROI_table_1_True_0_0, expected_table_well_ROI_table_3_True_0_0, expected_table_well_ROI_table_3_False_0_0, expected_table_masked_nuclei_ROI_table_0_True_0_0, expected_table_FOV_ROI_table_1_False_0_0, expected_table_masked_nuclei_ROI_table_1_True_0_0, FOV_ROI_table, nuclei, well_ROI_table, expected_table_well_ROI_table_0_True_0_0
 
 img$tree(level = 1)
 #> /
@@ -196,7 +196,7 @@ unlist(img$get_scale(pyramid_level = "2"))
 
 ## Path
 img$get_path()
-#> [1] "/var/folders/xc/cl1fyykn2pj4ryhdw6r1mqtc0000gn/T//RtmppWK5av/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr/B/03/0"
+#> [1] "/var/folders/6c/pzd640_546q6_yfn24r65c_40000gn/T//RtmpIVp6zJ/20200812-CardiomyocyteDifferentiation14-Cycle1_mip.zarr/B/03/0"
 
 ## Image name
 img$name
@@ -205,15 +205,15 @@ img$name
 ## Table names
 img$table_names
 #>  [1] "nuclei_ROI_table"                                 
-#>  [2] "expected_table_masked_nuclei_ROI_table_1_True_0_0"
-#>  [3] "expected_table_FOV_ROI_table_1_True_0_0"          
-#>  [4] "expected_table_well_ROI_table_3_True_0_0"         
+#>  [2] "expected_table_FOV_ROI_table_1_True_0_0"          
+#>  [3] "expected_table_well_ROI_table_3_True_0_0"         
+#>  [4] "expected_table_well_ROI_table_3_False_0_0"        
 #>  [5] "expected_table_masked_nuclei_ROI_table_0_True_0_0"
-#>  [6] "expected_table_well_ROI_table_3_False_0_0"        
-#>  [7] "FOV_ROI_table"                                    
-#>  [8] "expected_table_FOV_ROI_table_1_False_0_0"         
-#>  [9] "well_ROI_table"                                   
-#> [10] "nuclei"                                           
+#>  [6] "expected_table_FOV_ROI_table_1_False_0_0"         
+#>  [7] "expected_table_masked_nuclei_ROI_table_1_True_0_0"
+#>  [8] "FOV_ROI_table"                                    
+#>  [9] "nuclei"                                           
+#> [10] "well_ROI_table"                                   
 #> [11] "expected_table_well_ROI_table_0_True_0_0"
 ```
 
@@ -425,8 +425,8 @@ sessionInfo()
 #> [25] pillar_1.11.1       bslib_0.9.0         tiff_0.1-12        
 #> [28] rlang_1.1.6         cachem_1.1.0        dir.expiry_1.18.0  
 #> [31] xfun_0.54           fs_1.6.6            sass_0.4.10        
-#> [34] cli_3.6.5           magrittr_2.0.4      pkgdown_2.1.3.9000 
-#> [37] digest_0.6.37       grid_4.5.2          locfit_1.5-9.12    
+#> [34] cli_3.6.5           magrittr_2.0.4      pkgdown_2.2.0.9000 
+#> [37] digest_0.6.38       grid_4.5.2          locfit_1.5-9.12    
 #> [40] basilisk_1.22.0     lifecycle_1.0.4     vctrs_0.6.5        
 #> [43] glue_1.8.0          evaluate_1.0.5      ragg_1.5.0         
 #> [46] RCurl_1.98-1.17     abind_1.4-8         rmarkdown_2.30     
